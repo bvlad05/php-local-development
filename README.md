@@ -13,17 +13,41 @@ sudo systemctl enable nginx
 sudo systemctl start nginx
 sudo systemctl status nginx
 ```
-### Step 1: Update Software Packages
+### Step 3: Install MariaDB Database Server
 ```bash
-
+sudo apt-get install mariadb-server mariadb-client
+sudo mysql_secure_installation
 ```
-### Step 1: Update Software Packages
+When prompted, answer the questions below by following the guide.
+Enter current password for root (enter for none): Just press the Enter
+* Set root password? [Y/n]: Y
+* New password: Enter password
+* Re-enter new password: Repeat password
+* Remove anonymous users? [Y/n]: Y
+* Disallow root login remotely? [Y/n]: Y
+* Remove test database and access to it? [Y/n]:  Y
+* Reload privilege tables now? [Y/n]:  Y
+To verify and validate that MariaDB is installed and working, login to the database console using the commands below:
 ```bash
-
+sudo mysql -u root -p
 ```
-### Step 1: Update Software Packages
+### Step 4: Install PHP 7.4 and Related Modules
 ```bash
-
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:ondrej/php
+sudo apt update
+sudo apt install php7.4-fpm php7.4-common php7.4-mysql php7.4-gmp php7.4-curl php7.4-intl php7.4-mbstring php7.4-xmlrpc php7.4-gd php7.4-xml php7.4-cli php7.4-zip php7.4-sqlite3
+sudo nano /etc/php/7.4/fpm/php.ini
+```
+```ini
+file_uploads = On
+allow_url_fopen = On
+short_open_tag = On
+memory_limit = 256M
+cgi.fix_pathinfo = 0
+upload_max_filesize = 100M
+max_execution_time = 360
+date.timezone = America/Chicago
 ```
 
 ## Create website configuration
@@ -49,7 +73,7 @@ And add next line
 ```
 5. Reload nginx service
 ```bash
-sudo systemctl reload nginx.service
+sudo systemctl restart nginx.service
 ```
 6. Create project folder with permissions
 ```bash
