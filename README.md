@@ -1,5 +1,7 @@
 # PHP Local Development
 
+## Setup environment
+
 ## Create website configuration
 1. Create a configurate file /etc/nginx/sites-available/website.local
 ```bash
@@ -14,6 +16,7 @@ sudo ln -s /etc/nginx/sites-available/website.local /etc/nginx/sites-enabled/
 ```bash
 sudo nano /etc/hosts
 ```
+And add next line
 ```
 127.0.0.1  website.local
 ```
