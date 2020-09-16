@@ -1,6 +1,30 @@
 # PHP Local Development
 
-## Setup environment
+## Setup LEMP stack
+### Step 1: Update Software Packages
+```bash
+sudo apt update
+sudo apt upgrade
+```
+### Step 2: Install Nginx Web Server
+```bash
+sudo apt install nginx
+sudo systemctl enable nginx
+sudo systemctl start nginx
+sudo systemctl status nginx
+```
+### Step 1: Update Software Packages
+```bash
+
+```
+### Step 1: Update Software Packages
+```bash
+
+```
+### Step 1: Update Software Packages
+```bash
+
+```
 
 ## Create website configuration
 1. Create a configurate file /etc/nginx/sites-available/website.local
@@ -26,4 +50,11 @@ And add next line
 5. Reload nginx service
 ```bash
 sudo systemctl reload nginx.service
+```
+6. Create project folder with permissions
+```bash
+cd ~/Projects
+sudo mkdir website
+sudo chown -R www-data:www-data website/
+sudo chmod -R 775 website/
 ```
