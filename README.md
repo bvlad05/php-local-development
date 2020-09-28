@@ -8,10 +8,19 @@ sudo apt upgrade
 ```
 ### Step 2: Install Nginx Web Server
 ```bash
-sudo apt install nginx
+sudo apt install nginx -y
 sudo systemctl enable nginx
 sudo systemctl start nginx
 sudo systemctl status nginx
+```
+```
+for i in ssh http https
+do
+           ufw allow $i
+done
+```
+```bash
+ufw enable
 ```
 ### Step 3: Install MariaDB Database Server
 ```bash
@@ -31,6 +40,11 @@ To verify and validate that MariaDB is installed and working, login to the datab
 ```bash
 sudo mysql -u root -p
 ```
+```sql
+MariaDB [(none)]> GRANT ALL ON example_database.* TO 'admin'@'localhost' IDENTIFIED BY 'admin' WITH GRANT OPTION;
+MariaDB [(none)]> FLUSH PRIVILEGES;
+MariaDB [(none)]> exit;
+```
 ### Step 4: Install PHP 7.4 and Related Modules
 ```bash
 sudo apt-get install software-properties-common
@@ -47,7 +61,7 @@ memory_limit = 256M
 cgi.fix_pathinfo = 0
 upload_max_filesize = 100M
 max_execution_time = 360
-date.timezone = America/Chicago
+date.timezone = Europe/Kiev
 ```
 
 ## Create website configuration
