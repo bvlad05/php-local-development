@@ -41,7 +41,7 @@ To verify and validate that MariaDB is installed and working, login to the datab
 sudo mysql -u root -p
 ```
 ```sql
-MariaDB [(none)]> GRANT ALL ON example_database.* TO 'admin'@'localhost' IDENTIFIED BY 'admin' WITH GRANT OPTION;
+MariaDB [(none)]> GRANT ALL ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'admin' WITH GRANT OPTION;
 MariaDB [(none)]> FLUSH PRIVILEGES;
 MariaDB [(none)]> exit;
 ```
